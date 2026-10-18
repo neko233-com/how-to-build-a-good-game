@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>如何构建一个好游戏</title>
+    <meta
+      name="description"
+      content="一本讲如何构建好游戏的书：从任天堂与顶级创作者的设计哲学，到市场竞争、商业化、数据驱动与验证效率。"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <script>
+      // 必须在首屏绘制之前定好主题：如果在 React 的 useEffect 里才加 .dark，
+      // 首屏会先按亮色渲染再切换，带 transition-colors 的元素会闪一下灰。
+      (function () {
+        var stored = null;
+        try {
+          stored = window.localStorage.getItem('hbg-theme');
+        } catch (error) {
+          stored = null;
+        }
+        var dark =
+          stored === 'dark' ||
+          (stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+        var root = document.documentElement;
+        root.classList.toggle('dark', dark);
+        root.style.colorScheme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <script>
+      // GitHub Pages 对未知深链接返回 404.html，那里会把原始路径塞进 ?p= 参数。
+      // 这里在 React 挂载之前把它还原成真实 URL，保证刷新深链接不丢路由。
+      (function () {
+        var base = '/how-to-build-a-good-game/';
+        var match = location.search.match(/^\?p=([^&]*)$/);
+        if (!match) return;
+        history.replaceState(null, '', base + decodeURIComponent(match[1]) + location.hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

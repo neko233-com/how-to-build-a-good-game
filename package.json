@@ -1,0 +1,38 @@
+{
+  "name": "how-to-build-a-good-game",
+  "version": "0.1.0",
+  "private": true,
+  "description": "一本讲如何构建好游戏的书，站点即书",
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview",
+    "check": "vp check",
+    "check:fix": "vp check --fix",
+    "test": "vp test"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "motion": "^12.43.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "vite-plus": "^1.3.0"
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@1.3.0",
+    "vitest": "5.0.5"
+  },
+  "packageManager": "npm@11.9.0"
+}

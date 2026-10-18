@@ -33,6 +33,9 @@ coverage/
 .vitest/
 *.tsbuildinfo
 
+# 本地视觉核对截图（可随时重新生成，不进仓库）
+.shots/
+
 # 本地 CLI 状态（个人配置与 agent 记忆，不随公开仓库发布）
 .codely-cli/
 CODELY.md
