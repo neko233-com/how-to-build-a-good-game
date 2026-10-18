@@ -28,6 +28,8 @@ export interface Chapter {
   part: PartId;
   /** 首批样章，首页单独推荐 */
   featured?: boolean;
+  /** 缺省视为草稿；正文写完后再显式标为 written */
+  status?: 'draft' | 'written';
 }
 
 export interface BookMeta {
@@ -270,6 +272,11 @@ export function getSiblings(slug: string | undefined): {
 }
 
 export const FEATURED_CHAPTERS: Chapter[] = CHAPTERS.filter((chapter) => chapter.featured);
+
+/** 还没有完成正文的章节，站点会据此显示草稿提示 */
+export function isDraft(chapter: Chapter): boolean {
+  return chapter.status !== 'written';
+}
 
 /** 从 React Router 的 location.pathname 反推当前章节 slug（basename 已被剥离） */
 export function slugFromPath(pathname: string): string | undefined {

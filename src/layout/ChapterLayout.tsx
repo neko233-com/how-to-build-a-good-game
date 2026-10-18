@@ -1,17 +1,23 @@
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
-import { type Chapter, chapterHref, findPart, getSiblings } from '@/content/meta';
+import { type Chapter, chapterHref, findPart, getSiblings, isDraft } from '@/content/meta';
+import { Toc } from '@/layout/Toc';
+import { useHeadingOutline } from '@/lib/toc';
 
 interface ChapterLayoutProps {
   chapter: Chapter;
   children: ReactNode;
 }
 
-/** 章节页外壳：篇/章编号、标题、摘要，正文，底部上下章导航 */
+/** 章节页外壳：篇/章编号、标题、摘要，正文 + 右侧小节目录，底部上下章导航 */
 export function ChapterLayout({ chapter, children }: ChapterLayoutProps) {
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const headings = useHeadingOutline(bodyRef, chapter.slug);
+
   const part = findPart(chapter.part);
   const { prev, next } = getSiblings(chapter.slug);
+  const draft = isDraft(chapter);
 
   const eyebrow = part
     ? part.number === null
@@ -21,19 +27,33 @@ export function ChapterLayout({ chapter, children }: ChapterLayoutProps) {
 
   return (
     <article className="pb-8">
-      <header className="mb-10 max-w-[42rem]">
-        <p className="text-muted-foreground mb-3 font-mono text-xs tracking-widest uppercase">
-          {eyebrow}
-          <span className="mx-2">/</span>
-          {chapter.order}
-        </p>
-        <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          {chapter.title}
-        </h1>
-        <p className="text-muted-foreground mt-4 leading-relaxed">{chapter.summary}</p>
-      </header>
+      <div className="flex gap-12">
+        <div className="min-w-0 flex-1">
+          <header className="mb-10 max-w-[42rem]">
+            <p className="text-muted-foreground mb-3 font-mono text-xs tracking-widest uppercase">
+              {eyebrow}
+              <span className="mx-2">/</span>
+              {chapter.order}
+            </p>
+            <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              {chapter.title}
+            </h1>
+            <p className="text-muted-foreground mt-4 leading-relaxed">{chapter.summary}</p>
 
-      <div className="prose-book">{children}</div>
+            {draft ? (
+              <p className="text-muted-foreground border-border mt-6 rounded-lg border border-dashed px-4 py-3 text-sm leading-relaxed">
+                这一章还在写。下面列出的是它准备回答的问题与论证路数，正文补全后会替换掉。
+              </p>
+            ) : null}
+          </header>
+
+          <div ref={bodyRef} className="prose-book">
+            {children}
+          </div>
+        </div>
+
+        <Toc headings={headings} className="hidden w-56 shrink-0 self-start xl:block" />
+      </div>
 
       <nav aria-label="章节导航" className="mt-16 grid gap-3 border-t pt-8 sm:grid-cols-2">
         {prev ? (
