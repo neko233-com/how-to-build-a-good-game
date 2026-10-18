@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react';
 
+import { assetUrl } from '@/lib/utils';
+
 export interface FigureProps {
-  /** public/ 下的相对路径，例如 images/cover.webp */
+  /** public/ 下的相对路径，例如 images/cover.jpg */
   src: string;
   /** 必须写，正文里不要出现无替代文本的图 */
   alt: string;
@@ -12,13 +14,10 @@ export interface FigureProps {
 }
 
 export function Figure({ src, alt, caption, width, height }: FigureProps) {
-  // 部署在 GitHub Pages 子路径下，public/ 里的静态资源必须带上 base 前缀
-  const resolved = `${import.meta.env.BASE_URL}${src.replace(/^\/+/, '')}`;
-
   return (
     <figure>
       <img
-        src={resolved}
+        src={assetUrl(src)}
         alt={alt}
         width={width}
         height={height}

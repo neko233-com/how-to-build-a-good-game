@@ -11,8 +11,9 @@ import {
   chaptersOfPart,
 } from '@/content/meta';
 import type { BookOutletContext } from '@/layout/BookLayout';
+import { assetUrl } from '@/lib/utils';
 
-/** 封面页：书名、一句话主张、样章入口与全书目录 */
+/** 封面页：书名、一句话主张、封面图、样章入口与全书目录 */
 export function HomePage() {
   const { theme } = useOutletContext<BookOutletContext>();
   const startChapter = FEATURED_CHAPTERS[0] ?? CHAPTERS[0];
@@ -55,6 +56,18 @@ export function HomePage() {
         </div>
       </section>
 
+      <figure className="mt-14">
+        <img
+          src={assetUrl('images/cover.jpg')}
+          alt="封面插画：等距视角中由几何积木拼成的街机机体、逐级抬升的阶梯与堆叠的方块"
+          width={1600}
+          height={900}
+          fetchPriority="high"
+          decoding="async"
+          className="border-border w-full rounded-2xl border"
+        />
+      </figure>
+
       <section className="mt-16">
         <h2 className="mb-1 text-xl font-semibold tracking-tight">先读这三章</h2>
         <p className="text-muted-foreground mb-6 text-sm">
@@ -88,7 +101,7 @@ export function HomePage() {
       <section className="mt-16">
         <h2 className="mb-6 text-xl font-semibold tracking-tight">全书目录</h2>
 
-        <div className="space-y-10">
+        <div className="space-y-14">
           {PARTS.map((part) => {
             const chapters = chaptersOfPart(part.id);
             if (chapters.length === 0) return null;
@@ -102,7 +115,19 @@ export function HomePage() {
                   {part.description}
                 </p>
 
-                <ul className="mt-4 divide-y rounded-xl border">
+                {part.plate ? (
+                  <img
+                    src={assetUrl(part.plate.src)}
+                    alt={part.plate.alt}
+                    width={1600}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
+                    className="border-border mt-5 w-full rounded-xl border"
+                  />
+                ) : null}
+
+                <ul className="divide-border mt-5 divide-y rounded-xl border">
                   {chapters.map((chapter) => (
                     <li key={chapter.slug}>
                       <Link

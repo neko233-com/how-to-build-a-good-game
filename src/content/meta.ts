@@ -15,6 +15,8 @@ export interface Part {
   description: string;
   /** 该篇章节所在的 URL 前缀 */
   basePath: string;
+  /** 分篇开篇插画：public/images 下的相对路径与替代文本 */
+  plate?: { src: string; alt: string };
 }
 
 export interface Chapter {
@@ -63,6 +65,10 @@ export const PARTS: Part[] = [
     title: '好游戏的三把尺子',
     description: '先搞清楚「好」是什么：可引用的定义、可拆解的机制，以及及格线为什么会漂移。',
     basePath: '/chapters',
+    plate: {
+      src: 'images/part-1-craft.jpg',
+      alt: '分篇插画：一把巨大的几何直尺斜立着，尺身有三道刻度缺口，旁边地面上散落着立方体、圆锥与球体',
+    },
   },
   {
     id: 'market',
@@ -70,6 +76,10 @@ export const PARTS: Part[] = [
     title: '市场与竞争',
     description: '好游戏不等于能活下来。这一篇谈货架、流量、定价与可跨行业复用的商业原理。',
     basePath: '/chapters',
+    plate: {
+      src: 'images/part-2-market.jpg',
+      alt: '分篇插画：一组等距排列的几何货架，格子里放着形态各异的小型几何体，地面上铺着由琥珀色箭头组成的路线',
+    },
   },
   {
     id: 'data',
@@ -77,6 +87,10 @@ export const PARTS: Part[] = [
     title: '数据驱动',
     description: '数据什么时候是对的、什么时候是错的，以及如何把验证时间压到最短。',
     basePath: '/chapters',
+    plate: {
+      src: 'images/part-3-data.jpg',
+      alt: '分篇插画：等距桌面上摊开一张几何网格图表板，立着高低不同的琥珀色柱体与一条上扬折线，旁边是一个几何漏斗',
+    },
   },
   {
     id: 'delivery',
@@ -84,6 +98,10 @@ export const PARTS: Part[] = [
     title: '落地',
     description: '把前面所有原则收拢成一份可以照着做的清单。',
     basePath: '/chapters',
+    plate: {
+      src: 'images/part-4-delivery.jpg',
+      alt: '分篇插画：一段正在垒砌的几何砖墙台阶，右侧放着一只半开的几何工具箱，一条路径通向台阶顶端',
+    },
   },
   {
     id: 'appendix',
