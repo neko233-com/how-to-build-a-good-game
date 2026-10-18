@@ -15,7 +15,7 @@ export interface FigureProps {
 
 export function Figure({ src, alt, caption, width, height }: FigureProps) {
   return (
-    <figure>
+    <figure className="my-10">
       <img
         src={assetUrl(src)}
         alt={alt}

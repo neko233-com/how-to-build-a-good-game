@@ -1,11 +1,13 @@
 export { CoreLoopDiagram } from './CoreLoopDiagram';
 export { LtvCacChart } from './LtvCacChart';
 export { ScoreFloorChart } from './ScoreFloorChart';
+export { TippingPointDiagram } from './TippingPointDiagram';
 export { ValidationFunnel } from './ValidationFunnel';
 
 import { CoreLoopDiagram } from './CoreLoopDiagram';
 import { LtvCacChart } from './LtvCacChart';
 import { ScoreFloorChart } from './ScoreFloorChart';
+import { TippingPointDiagram } from './TippingPointDiagram';
 import { ValidationFunnel } from './ValidationFunnel';
 
 /**
@@ -16,5 +18,6 @@ export const chartComponents = {
   CoreLoopDiagram,
   LtvCacChart,
   ScoreFloorChart,
+  TippingPointDiagram,
   ValidationFunnel,
 };

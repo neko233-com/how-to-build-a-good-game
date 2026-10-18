@@ -101,6 +101,11 @@
 /* ---------------------------------------------------------------
    正文排版：书稿的核心是长时间阅读，所以字号、行高、段落间距
    都在这里统一控制，而不是散落在各个组件里。
+
+   注意：一律使用「直接子元素」选择器（>）。MDX 正文里的标题、
+   段落、列表都是 .prose-book 的直接子元素，而 QuoteCard、Callout、
+   KeyPoints 这些组件内部的元素不是——否则这里的高特异性规则会把
+   组件自带的样式覆盖掉（比如给编号列表加上圆点、把卡片引用变灰）。
    --------------------------------------------------------------- */
 @layer components {
   .prose-book {
@@ -114,19 +119,19 @@
     margin-top: 1.15em;
   }
 
-  .prose-book h2 {
+  .prose-book > h2 {
     @apply border-border mt-14 mb-5 border-b pb-2 text-2xl font-semibold tracking-tight;
   }
 
-  .prose-book h3 {
+  .prose-book > h3 {
     @apply mt-10 mb-3 text-xl font-semibold tracking-tight;
   }
 
-  .prose-book h4 {
+  .prose-book > h4 {
     @apply text-muted-foreground mt-8 mb-2 text-base font-semibold;
   }
 
-  .prose-book p {
+  .prose-book > p {
     text-wrap: pretty;
   }
 
@@ -139,16 +144,16 @@
     @apply text-foreground font-semibold;
   }
 
-  .prose-book ul,
-  .prose-book ol {
+  .prose-book > ul,
+  .prose-book > ol {
     @apply space-y-2 pl-6;
   }
 
-  .prose-book ul {
+  .prose-book > ul {
     @apply list-disc;
   }
 
-  .prose-book ol {
+  .prose-book > ol {
     @apply list-decimal;
   }
 
@@ -156,7 +161,7 @@
     @apply text-muted-foreground;
   }
 
-  .prose-book blockquote {
+  .prose-book > blockquote {
     @apply border-primary/40 text-muted-foreground border-l-2 pl-5 italic;
   }
 
@@ -172,20 +177,12 @@
     @apply bg-transparent p-0;
   }
 
-  .prose-book hr {
+  .prose-book > hr {
     @apply border-border my-12;
   }
 
-  .prose-book figure {
-    @apply my-10;
-  }
-
-  .prose-book figcaption {
-    @apply text-muted-foreground mt-3 text-center text-sm;
-  }
-
-  .prose-book table {
-    @apply w-full border-collapse text-sm;
+  .prose-book > table {
+    @apply block w-full overflow-x-auto border-collapse text-sm;
   }
 
   .prose-book th {
@@ -194,9 +191,5 @@
 
   .prose-book td {
     @apply border-t px-4 py-3 text-left align-top;
-  }
-
-  .prose-book > table {
-    @apply block overflow-x-auto;
   }
 }

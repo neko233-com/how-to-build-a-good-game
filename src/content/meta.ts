@@ -131,6 +131,7 @@ export const CHAPTERS: Chapter[] = [
       '一个流传甚广却查无实据的说法，以及岩田聪真正说过的话：MUST-HAVE 游戏的四个要素，和让口碑自行扩散的两个条件。',
     part: 'craft',
     featured: true,
+    status: 'written',
   },
   {
     slug: 'what-masters-bet-on',
@@ -158,6 +159,7 @@ export const CHAPTERS: Chapter[] = [
       '当同行都能做到 60 分，60 分就不再是分数，而是入场券。及格线不是绝对值，而是行业水位。',
     part: 'craft',
     featured: true,
+    status: 'written',
   },
   {
     slug: 'competence-floor',
@@ -207,6 +209,7 @@ export const CHAPTERS: Chapter[] = [
     summary: '用最低成本换最早的真实反馈：把数月的赌博，压缩成数周的实验。',
     part: 'data',
     featured: true,
+    status: 'written',
   },
   {
     slug: 'metrics-and-traps',
