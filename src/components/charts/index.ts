@@ -1,0 +1,20 @@
+export { CoreLoopDiagram } from './CoreLoopDiagram';
+export { LtvCacChart } from './LtvCacChart';
+export { ScoreFloorChart } from './ScoreFloorChart';
+export { ValidationFunnel } from './ValidationFunnel';
+
+import { CoreLoopDiagram } from './CoreLoopDiagram';
+import { LtvCacChart } from './LtvCacChart';
+import { ScoreFloorChart } from './ScoreFloorChart';
+import { ValidationFunnel } from './ValidationFunnel';
+
+/**
+ * 手写 SVG 图表，不依赖图表库：
+ * 配色直接跟随设计 token，深浅两种模式下都能读，且能随代码一起版本管理。
+ */
+export const chartComponents = {
+  CoreLoopDiagram,
+  LtvCacChart,
+  ScoreFloorChart,
+  ValidationFunnel,
+};

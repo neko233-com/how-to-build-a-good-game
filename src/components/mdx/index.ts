@@ -6,6 +6,8 @@ export { PullQuote } from './PullQuote';
 export { QuoteCard } from './QuoteCard';
 export { StatCard } from './StatCard';
 
+import { chartComponents } from '@/components/charts';
+
 import { Callout } from './Callout';
 import { CompareTable } from './CompareTable';
 import { Figure } from './Figure';
@@ -16,7 +18,7 @@ import { StatCard } from './StatCard';
 
 /**
  * 注入给 MDX 正文的组件表（见 vite.config.ts 的 providerImportSource）。
- * 正文里可以直接写 <QuoteCard … />，不必逐章 import。
+ * 正文里可以直接写 <QuoteCard … />、<ScoreFloorChart />，不必逐章 import。
  */
 export const mdxComponents = {
   Callout,
@@ -26,4 +28,5 @@ export const mdxComponents = {
   PullQuote,
   QuoteCard,
   StatCard,
+  ...chartComponents,
 };
