@@ -34,7 +34,14 @@
         var base = '/how-to-build-a-good-game/';
         var match = location.search.match(/^\?p=([^&]*)$/);
         if (!match) return;
-        history.replaceState(null, '', base + decodeURIComponent(match[1]) + location.hash);
+        // 两侧的斜杠都要去重：base 以 / 结尾、还原出来的路径也以 / 开头，
+        // 直接拼接会得到 //chapters/xxx 这种路径，React Router 匹配不上。
+        var path = decodeURIComponent(match[1]);
+        history.replaceState(
+          null,
+          '',
+          base.replace(/\/+$/, '') + '/' + path.replace(/^\/+/, '') + location.hash,
+        );
       })();
     </script>
   </head>
