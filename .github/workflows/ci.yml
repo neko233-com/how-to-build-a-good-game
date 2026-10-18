@@ -1,0 +1,42 @@
+name: CI
+
+# 只在分支推送和 PR 上跑校验；打 tag 时由 deploy.yml 负责（那里也会完整跑一遍校验）
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v7.0.1
+
+      - name: 安装 Vite+
+        uses: voidzero-dev/setup-vp@v1.21.2
+        with:
+          node-version: '24'
+          cache: true
+
+      - name: 输出工具链版本
+        run: vp toolchain
+
+      - name: 安装依赖（锁文件不一致即失败）
+        run: vp install --frozen-lockfile
+
+      - name: 格式 / Lint / 类型检查
+        run: vp check
+
+      - name: 单元测试
+        run: vp test
+
+      - name: 生产构建
+        run: vp build
