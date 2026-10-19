@@ -4,6 +4,7 @@ import {
   CHAPTERS,
   FEATURED_CHAPTERS,
   PARTS,
+  type Chapter,
   chapterHref,
   chaptersOfPart,
   findChapter,
@@ -70,7 +71,9 @@ describe('章节清单', () => {
   });
 
   it('未显式标注状态的章节按草稿处理', () => {
-    expect(isDraft({ ...CHAPTERS[0] })).toBe(true);
-    expect(isDraft({ ...CHAPTERS[0], status: 'written' })).toBe(false);
+    // 不依赖某个具体章节：全部章节现在都已完稿，所以这里显式造一个没有状态的条目
+    const withoutStatus: Chapter = { ...CHAPTERS[0], status: undefined };
+    expect(isDraft(withoutStatus)).toBe(true);
+    expect(isDraft({ ...withoutStatus, status: 'written' })).toBe(false);
   });
 });

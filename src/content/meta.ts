@@ -121,6 +121,7 @@ export const CHAPTERS: Chapter[] = [
     short: '序言',
     summary: '为什么大多数游戏不是「不好」，而是「不必要」；以及本书的组织方式与三种读法。',
     part: 'preface',
+    status: 'written',
   },
   {
     slug: 'nintendo-three-rulers',
@@ -141,6 +142,7 @@ export const CHAPTERS: Chapter[] = [
     summary:
       '宫本茂、岩田聪、樱井政博、席德·梅尔、Raph Koster、Jesse Schell……把他们的原话放回语境，看他们真正在赌什么。',
     part: 'craft',
+    status: 'written',
   },
   {
     slug: 'mechanics-of-fun',
@@ -149,6 +151,7 @@ export const CHAPTERS: Chapter[] = [
     short: '好玩的机制学',
     summary: '把「好玩」拆成可操作的结构：核心循环、风险与回报、学习曲线，以及惊喜的投放节奏。',
     part: 'craft',
+    status: 'written',
   },
   {
     slug: 'sixty-is-zero',
@@ -168,6 +171,7 @@ export const CHAPTERS: Chapter[] = [
     short: '能力地板',
     summary: '把竞争强度量化：先测出「同行都能做到多少分」，再谈你的差异化究竟值多少。',
     part: 'market',
+    status: 'written',
   },
   {
     slug: 'market-structure',
@@ -186,6 +190,7 @@ export const CHAPTERS: Chapter[] = [
     short: '商业化算术',
     summary: '把商业化还原成算术题：LTV、CAC、回收周期，以及什么时候该停下来。',
     part: 'market',
+    status: 'written',
   },
   {
     slug: 'cross-industry-principles',
@@ -194,6 +199,7 @@ export const CHAPTERS: Chapter[] = [
     short: '跨行业商业原理',
     summary: '为什么「游戏行业经验」常常不通用，而商业原理永远通用：需求、渠道、复购与品牌。',
     part: 'market',
+    status: 'written',
   },
   {
     slug: 'data-driven-why',
@@ -222,6 +228,7 @@ export const CHAPTERS: Chapter[] = [
     short: '指标与陷阱',
     summary: '哪些指标真的预测生死，哪些只是安慰剂；以及幸存者偏差如何系统性地骗过所有人。',
     part: 'data',
+    status: 'written',
   },
   {
     slug: 'from-zero-to-one',
@@ -230,6 +237,7 @@ export const CHAPTERS: Chapter[] = [
     short: '0 到 1 检查清单',
     summary: '把前面所有章节收拢成一份可以照着做的清单。',
     part: 'delivery',
+    status: 'written',
   },
   {
     slug: 'how-games-die',
@@ -238,6 +246,7 @@ export const CHAPTERS: Chapter[] = [
     short: '常见死法与复盘',
     summary: '项目不是突然死的，是每天死一点：常见死法清单与复盘方法。',
     part: 'delivery',
+    status: 'written',
   },
   {
     slug: 'references',
@@ -246,6 +255,7 @@ export const CHAPTERS: Chapter[] = [
     short: '引用与出处总表',
     summary: '书中所有引述的来源、可信度分级与核实状态。',
     part: 'appendix',
+    status: 'written',
   },
   {
     slug: 'glossary',
@@ -254,6 +264,7 @@ export const CHAPTERS: Chapter[] = [
     short: '术语表',
     summary: 'D1/D7、LTV、CAC、CPI、回收周期……本书用到的行业术语。',
     part: 'appendix',
+    status: 'written',
   },
   {
     slug: 'bibliography',
@@ -262,6 +273,7 @@ export const CHAPTERS: Chapter[] = [
     short: '参考文献',
     summary: '书籍、演讲、访谈与研究报告清单。',
     part: 'appendix',
+    status: 'written',
   },
 ];
 
