@@ -86,20 +86,24 @@ function readBase() {
 
 /**
  * 从 src/content/meta.ts 解析出全部路由。
- * meta.ts 由 Oxfmt 统一格式化、字段顺序稳定，所以这里用正则提取；
+ * 必须按「条目边界」解析：从 slug 起、到该条目的闭合大括号为止，
+ * status 只在这段里找。用固定长度窗口会越界读到下一条目的 status，
+ * 把骨架章节误判成已完成（这个 bug 真实发生过）。
  * 一旦数量异常就报错，不静默漏测。
  */
 function readRoutes(base) {
   const source = readFileSync(join(ROOT, 'src/content/meta.ts'), 'utf8');
   const routes = [];
-  const slugPattern = /slug:\s*'([^']+)'/g;
+  const entryPattern = /slug:\s*'([^']+)'[\s\S]*?part:\s*'([^']+)'[\s\S]*?\}/g;
   let match;
-  while ((match = slugPattern.exec(source)) !== null) {
-    const rest = source.slice(match.index);
-    const partMatch = rest.match(/part:\s*'([^']+)'/);
-    if (!partMatch) continue;
-    const prefix = partMatch[1] === 'appendix' ? 'appendix' : 'chapters';
-    routes.push({ slug: match[1], path: `${base}${prefix}/${match[1]}` });
+  while ((match = entryPattern.exec(source)) !== null) {
+    const statusMatch = match[0].match(/status:\s*'([^']+)'/);
+    const prefix = match[2] === 'appendix' ? 'appendix' : 'chapters';
+    routes.push({
+      slug: match[1],
+      path: `${base}${prefix}/${match[1]}`,
+      written: statusMatch?.[1] === 'written',
+    });
   }
   if (routes.length < 17) {
     throw new Error(`从 meta.ts 只解析出 ${routes.length} 条路由，疑似解析失败`);
@@ -241,9 +245,33 @@ function inspect() {
       contrastResults.push({ label, ratio: Number(contrast(fg, bg).toFixed(2)) });
     }
 
+    const externalHrefs = [];
+    const internalHrefs = [];
+    for (const anchor of Array.from(doc.querySelectorAll('a[href]'))) {
+      const href = anchor.getAttribute('href') || '';
+      if (href.startsWith('http')) externalHrefs.push(href);
+      else if (href && href !== '#content' && !href.startsWith('#')) internalHrefs.push(href);
+    }
+
+    const headingLevels = Array.from(
+      doc.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6'),
+    ).map((el) => Number(el.tagName.slice(1)));
+
+    const tablesWithoutHeader = Array.from(doc.querySelectorAll('table')).filter(
+      (table) => !table.querySelector('th'),
+    ).length;
+
+    const visualCount = prose ? prose.querySelectorAll('svg, img, figure, table').length : 0;
+
     result.ok = true;
     result.hasProse = !!prose;
     result.headingCount = headings.length;
+    result.externalHrefs = externalHrefs;
+    result.internalHrefs = internalHrefs;
+    result.headingLevels = headingLevels;
+    result.tablesWithoutHeader = tablesWithoutHeader;
+    result.visualCount = visualCount;
+    result.docTitle = doc.title;
     result.url = win.location.pathname;
     result.hasher = win.location.search;
     result.title = doc.title;
@@ -361,6 +389,38 @@ function parseProbeResult(dom) {
   }
 }
 
+/**
+ * 外链健康检查。
+ * 分类口径必须区分三件事：404/5xx 是真失效；401/403/429 是站点不接受自动请求；
+ * 网络错误是校验环境自己的限制。后两者都不等于链接失效，只如实记录。
+ */
+async function checkExternalLink(url) {
+  const fetchCode = async (method) => {
+    const res = await fetch(url, {
+      method,
+      redirect: 'follow',
+      signal: AbortSignal.timeout(25000),
+    });
+    return res.status;
+  };
+
+  let code = null;
+  try {
+    code = await fetchCode('HEAD');
+    if (code === 400 || code === 405) code = await fetchCode('GET');
+  } catch {
+    try {
+      code = await fetchCode('GET');
+    } catch {
+      return { url, code: null, verdict: 'unreachable' };
+    }
+  }
+
+  if (code >= 200 && code < 400) return { url, code, verdict: 'ok' };
+  if (code === 401 || code === 403 || code === 429) return { url, code, verdict: 'blocked' };
+  return { url, code, verdict: 'dead' };
+}
+
 async function main() {
   const base = readBase();
   const basePath = base.replace(/\/+$/, '');
@@ -376,13 +436,21 @@ async function main() {
 
   const checks = [];
   const record = (name, pass, detail = '') => checks.push({ name, pass, detail });
+  const allExternal = new Set();
+  let linkResults = [];
 
   try {
     record('静态服务器就绪', true, `${basePath}/`);
 
+    const knownPaths = new Set([base, ...routes.map((route) => route.path)]);
+
     const targets = [
       { label: '首页', path: `${base}`, direct: true },
-      ...routes.map((route) => ({ label: route.path.replace(base, ''), path: route.path })),
+      ...routes.map((route) => ({
+        label: route.path.replace(base, ''),
+        path: route.path,
+        written: route.written,
+      })),
       {
         label: '不存在的章节（应显示 404）',
         path: `${base}chapters/__does-not-exist__`,
@@ -483,12 +551,71 @@ async function main() {
             ? `已测 ${data.contrast.length} 项，最低 ${Math.min(...data.contrast.map((c) => c.ratio))}`
             : low.map((c) => `${c.label} ${c.ratio}`).join('、'),
         );
+
+        // 标题层级不允许跳级：h1 直接跟 h3 会让目录与语义结构都变得含混
+        let headingJump = '';
+        let headingOk = true;
+        let previousLevel = 0;
+        for (const level of data.headingLevels) {
+          if (previousLevel && level > previousLevel + 1) {
+            headingOk = false;
+            headingJump = `h${previousLevel} → h${level}`;
+            break;
+          }
+          if (level) previousLevel = level;
+        }
+        record(`${tag} 标题层级不跳级`, headingOk, headingJump);
+
+        record(
+          `${tag} 表格都有表头`,
+          data.tablesWithoutHeader === 0,
+          `${data.tablesWithoutHeader} 个无表头`,
+        );
+
+        record(
+          `${tag} 页面标题包含书名`,
+          (data.docTitle || '').includes('如何构建一个好游戏'),
+          data.docTitle,
+        );
+
+        const badInternal = (data.internalHrefs || []).filter((href) => {
+          const clean = href.split('#')[0];
+          if (!clean) return false;
+          return !knownPaths.has(clean) && !knownPaths.has(`${clean}/`);
+        });
+        record(
+          `${tag} 站内链接指向存在的路由`,
+          badInternal.length === 0,
+          badInternal.slice(0, 3).join('、'),
+        );
+
+        if (target.written) {
+          record(
+            `${tag} 已完成章节至少有一张图`,
+            data.visualCount > 0,
+            `正文内视觉元素 ${data.visualCount} 个`,
+          );
+        }
+
+        for (const href of data.externalHrefs || []) allExternal.add(href);
       }
     }
   } finally {
     server.close();
     rmSync(join(DIST, PROBE_FILE), { force: true });
   }
+
+  // 外链健康：只有 404/5xx 算失败；401/403/429 是站点拦截自动请求；
+  // 网络错误是校验环境的限制。后两者不等于链接失效，只如实分类记录。
+  for (const url of [...allExternal].sort()) {
+    linkResults.push(await checkExternalLink(url));
+  }
+  const deadLinks = linkResults.filter((l) => l.verdict === 'dead');
+  record(
+    `外部链接健康（共 ${linkResults.length} 条，失效 ${deadLinks.length} 条）`,
+    deadLinks.length === 0,
+    deadLinks.map((l) => `${l.url} → ${l.code}`).join('、'),
+  );
 
   const failed = checks.filter((c) => !c.pass);
   const lines = [
@@ -498,6 +625,9 @@ async function main() {
     `- 覆盖范围：首页 + ${routes.length} 个章节/附录 + 1 个不存在路径，深浅两种模式`,
     `- 每个章节均通过「深链接兜底」链路访问（模拟 GitHub Pages 对未命中路径返回 404.html）`,
     `- 断言总数：${checks.length}`,
+    `- 外部链接：${linkResults.length} 条（失效 ${deadLinks.length}、拦截 ${
+      linkResults.filter((l) => l.verdict === 'blocked').length
+    }、本机网络不可达 ${linkResults.filter((l) => l.verdict === 'unreachable').length}）`,
     `- 结果：${failed.length === 0 ? '✅ 全部通过' : `❌ ${failed.length} 项未通过`}`,
     '',
     '> 本报告由 `node scripts/verify-site.mjs` 自动生成，请勿手工修改。',
@@ -514,6 +644,25 @@ async function main() {
     '| --- | --- | --- |',
     ...checks.map(
       (c) => `| ${c.name} | ${c.pass ? '✅' : '❌'} | ${(c.detail || '').replace(/\|/g, '\\|')} |`,
+    ),
+    '',
+    '## 外部链接健康',
+    '',
+    '分类口径：**失效**（404/5xx，真问题）；**站点拦截**（401/403/429，不接受自动请求，需人工在浏览器确认）；**本机网络无法访问**（校验环境的网络限制，不等于链接失效）。',
+    '',
+    '| 状态 | 状态码 | 链接 |',
+    '| --- | --- | --- |',
+    ...linkResults.map(
+      (l) =>
+        `| ${
+          l.verdict === 'ok'
+            ? '✅ 可访问'
+            : l.verdict === 'dead'
+              ? '❌ 疑似失效'
+              : l.verdict === 'blocked'
+                ? '⚠️ 站点拦截自动请求'
+                : '⚠️ 本机网络无法访问'
+        } | ${l.code ?? '—'} | ${l.url} |`,
     ),
     '',
   ];
