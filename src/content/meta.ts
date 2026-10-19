@@ -172,10 +172,12 @@ export const CHAPTERS: Chapter[] = [
   {
     slug: 'market-structure',
     order: '06',
-    title: '市场结构：品类、平台、买量与货架',
-    short: '市场结构',
-    summary: '货架在哪里、流量归谁、品类天花板有多高——先看清场子，再决定打法。',
+    title: '客群与流量：为什么同一套数值模型必然出错',
+    short: '客群与流量',
+    summary:
+      '同叫「游戏」，原神与《寻道大千》的受众几乎不重叠。客群结构、流量入口与留存机制决定了数值的可能范围——跳过它们直接谈数值，必然出错。',
     part: 'market',
+    status: 'written',
   },
   {
     slug: 'monetization-math',
@@ -196,10 +198,12 @@ export const CHAPTERS: Chapter[] = [
   {
     slug: 'data-driven-why',
     order: '09',
-    title: '数据驱动为什么是对的（以及何时是错的）',
-    short: '数据驱动为什么对',
-    summary: '数据不是裁判，是测量工具。它擅长否证，不擅长发明。',
+    title: '数值的虚假重要性：为什么完美的数值论证什么也证明不了',
+    short: '数值的虚假重要性',
+    summary:
+      '成功与失败都能被同一套数值解释通，说明它没有区分力；很多数值还是从营业额目标反推出来的——它是目标的下游产物，不是成功的原因。',
     part: 'data',
+    status: 'written',
   },
   {
     slug: 'shorten-validation',

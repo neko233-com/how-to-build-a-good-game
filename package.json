@@ -10,7 +10,8 @@
     "preview": "vp preview",
     "check": "vp check",
     "check:fix": "vp check --fix",
-    "test": "vp test"
+    "test": "vp test",
+    "verify": "node scripts/verify-site.mjs"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
