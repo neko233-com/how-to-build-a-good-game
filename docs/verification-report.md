@@ -1,10 +1,10 @@
 # 站点内容验证报告
 
-- 运行时间：2026-10-19T12:53:40.287Z
+- 运行时间：2026-10-19T13:06:37.727Z
 - 覆盖范围：首页 + 25 个章节/附录 + 1 个不存在路径，深浅两种模式
 - 每个章节均通过「深链接兜底」链路访问（模拟 GitHub Pages 对未命中路径返回 404.html）
 - 断言总数：730
-- 外部链接：37 条（失效 0、拦截 1、本机网络不可达 0）
+- 外部链接：37 条（失效 0、拦截 1、本机网络不可达 4）
 - 结果：✅ 全部通过
 
 > 本报告由 `node scripts/verify-site.mjs` 自动生成，请勿手工修改。
@@ -18,9 +18,9 @@
 
 | 断言 | 结果 | 说明 |
 | --- | --- | --- |
-| 静态服务器就绪 | ✅ | /how-to-build-a-good-game/ |
+| 静态服务器就绪 | ✅ | / |
 | 暗色 · 首页 渲染 | ✅ | 如何构建一个好游戏 |
-| 暗色 · 首页 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game / 实际 /how-to-build-a-good-game |
+| 暗色 · 首页 路由地址正确（含深链接兜底还原） | ✅ | 期望  / 实际  |
 | 暗色 · 首页 有正文容器 | ✅ |  |
 | 暗色 · 首页 无残留 Markdown | ✅ |  |
 | 暗色 · 首页 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -33,7 +33,7 @@
 | 暗色 · 首页 页面标题包含书名 | ✅ | 如何构建一个好游戏 |
 | 暗色 · 首页 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/preface 渲染 | ✅ | 序言：这本书想解决什么 |
-| 暗色 · chapters/preface 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/preface / 实际 /how-to-build-a-good-game/chapters/preface |
+| 暗色 · chapters/preface 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/preface / 实际 /chapters/preface |
 | 暗色 · chapters/preface 有正文容器 | ✅ |  |
 | 暗色 · chapters/preface 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/preface 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -47,7 +47,7 @@
 | 暗色 · chapters/preface 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/preface 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/nintendo-three-rulers 渲染 | ✅ | 任天堂的三把尺子：社交性、口碑，与那个被遗忘的第三项 |
-| 暗色 · chapters/nintendo-three-rulers 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/nintendo-three-rulers / 实际 /how-to-build-a-good-game/chapters/nintendo-three-rulers |
+| 暗色 · chapters/nintendo-three-rulers 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/nintendo-three-rulers / 实际 /chapters/nintendo-three-rulers |
 | 暗色 · chapters/nintendo-three-rulers 有正文容器 | ✅ |  |
 | 暗色 · chapters/nintendo-three-rulers 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/nintendo-three-rulers 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -61,7 +61,7 @@
 | 暗色 · chapters/nintendo-three-rulers 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/nintendo-three-rulers 已完成章节至少有一张图 | ✅ | 正文内视觉元素 8 个 |
 | 暗色 · chapters/what-masters-bet-on 渲染 | ✅ | 顶级创作者的原话：他们各自押注的是什么 |
-| 暗色 · chapters/what-masters-bet-on 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/what-masters-bet-on / 实际 /how-to-build-a-good-game/chapters/what-masters-bet-on |
+| 暗色 · chapters/what-masters-bet-on 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/what-masters-bet-on / 实际 /chapters/what-masters-bet-on |
 | 暗色 · chapters/what-masters-bet-on 有正文容器 | ✅ |  |
 | 暗色 · chapters/what-masters-bet-on 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/what-masters-bet-on 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -75,7 +75,7 @@
 | 暗色 · chapters/what-masters-bet-on 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/what-masters-bet-on 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/mechanics-of-fun 渲染 | ✅ | 好玩的机制学：核心循环、发现与惊喜、心流 |
-| 暗色 · chapters/mechanics-of-fun 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/mechanics-of-fun / 实际 /how-to-build-a-good-game/chapters/mechanics-of-fun |
+| 暗色 · chapters/mechanics-of-fun 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/mechanics-of-fun / 实际 /chapters/mechanics-of-fun |
 | 暗色 · chapters/mechanics-of-fun 有正文容器 | ✅ |  |
 | 暗色 · chapters/mechanics-of-fun 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/mechanics-of-fun 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -89,7 +89,7 @@
 | 暗色 · chapters/mechanics-of-fun 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/mechanics-of-fun 已完成章节至少有一张图 | ✅ | 正文内视觉元素 6 个 |
 | 暗色 · chapters/sixty-is-zero 渲染 | ✅ | 60 分就是 0 分：当及格线由同行决定 |
-| 暗色 · chapters/sixty-is-zero 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/sixty-is-zero / 实际 /how-to-build-a-good-game/chapters/sixty-is-zero |
+| 暗色 · chapters/sixty-is-zero 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/sixty-is-zero / 实际 /chapters/sixty-is-zero |
 | 暗色 · chapters/sixty-is-zero 有正文容器 | ✅ |  |
 | 暗色 · chapters/sixty-is-zero 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/sixty-is-zero 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -103,7 +103,7 @@
 | 暗色 · chapters/sixty-is-zero 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/sixty-is-zero 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/competence-floor 渲染 | ✅ | 能力地板：同行的平均分，就是你的 0 分 |
-| 暗色 · chapters/competence-floor 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/competence-floor / 实际 /how-to-build-a-good-game/chapters/competence-floor |
+| 暗色 · chapters/competence-floor 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/competence-floor / 实际 /chapters/competence-floor |
 | 暗色 · chapters/competence-floor 有正文容器 | ✅ |  |
 | 暗色 · chapters/competence-floor 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/competence-floor 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -117,7 +117,7 @@
 | 暗色 · chapters/competence-floor 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/competence-floor 已完成章节至少有一张图 | ✅ | 正文内视觉元素 5 个 |
 | 暗色 · chapters/market-structure 渲染 | ✅ | 客群与流量：为什么同一套数值模型必然出错 |
-| 暗色 · chapters/market-structure 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/market-structure / 实际 /how-to-build-a-good-game/chapters/market-structure |
+| 暗色 · chapters/market-structure 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/market-structure / 实际 /chapters/market-structure |
 | 暗色 · chapters/market-structure 有正文容器 | ✅ |  |
 | 暗色 · chapters/market-structure 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/market-structure 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -131,7 +131,7 @@
 | 暗色 · chapters/market-structure 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/market-structure 已完成章节至少有一张图 | ✅ | 正文内视觉元素 2 个 |
 | 暗色 · chapters/monetization-math 渲染 | ✅ | 商业化算术：定价、内购、广告与 LTV/CAC |
-| 暗色 · chapters/monetization-math 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/monetization-math / 实际 /how-to-build-a-good-game/chapters/monetization-math |
+| 暗色 · chapters/monetization-math 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/monetization-math / 实际 /chapters/monetization-math |
 | 暗色 · chapters/monetization-math 有正文容器 | ✅ |  |
 | 暗色 · chapters/monetization-math 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/monetization-math 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -145,7 +145,7 @@
 | 暗色 · chapters/monetization-math 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/monetization-math 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/cross-industry-principles 渲染 | ✅ | 可跨行业复用的商业原理 |
-| 暗色 · chapters/cross-industry-principles 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/cross-industry-principles / 实际 /how-to-build-a-good-game/chapters/cross-industry-principles |
+| 暗色 · chapters/cross-industry-principles 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/cross-industry-principles / 实际 /chapters/cross-industry-principles |
 | 暗色 · chapters/cross-industry-principles 有正文容器 | ✅ |  |
 | 暗色 · chapters/cross-industry-principles 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/cross-industry-principles 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -159,7 +159,7 @@
 | 暗色 · chapters/cross-industry-principles 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/cross-industry-principles 已完成章节至少有一张图 | ✅ | 正文内视觉元素 5 个 |
 | 暗色 · chapters/theme-and-core-loop 渲染 | ✅ | 选题与主玩法：先决定卖给谁，再决定怎么玩 |
-| 暗色 · chapters/theme-and-core-loop 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/theme-and-core-loop / 实际 /how-to-build-a-good-game/chapters/theme-and-core-loop |
+| 暗色 · chapters/theme-and-core-loop 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/theme-and-core-loop / 实际 /chapters/theme-and-core-loop |
 | 暗色 · chapters/theme-and-core-loop 有正文容器 | ✅ |  |
 | 暗色 · chapters/theme-and-core-loop 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/theme-and-core-loop 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -173,7 +173,7 @@
 | 暗色 · chapters/theme-and-core-loop 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/theme-and-core-loop 已完成章节至少有一张图 | ✅ | 正文内视觉元素 6 个 |
 | 暗色 · chapters/gameplay-stacking 渲染 | ✅ | 副玩法与玩法组合：为什么几乎没人只做一个玩法 |
-| 暗色 · chapters/gameplay-stacking 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/gameplay-stacking / 实际 /how-to-build-a-good-game/chapters/gameplay-stacking |
+| 暗色 · chapters/gameplay-stacking 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/gameplay-stacking / 实际 /chapters/gameplay-stacking |
 | 暗色 · chapters/gameplay-stacking 有正文容器 | ✅ |  |
 | 暗色 · chapters/gameplay-stacking 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/gameplay-stacking 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -187,7 +187,7 @@
 | 暗色 · chapters/gameplay-stacking 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/gameplay-stacking 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/art-style 渲染 | ✅ | 美术风格：风格是市场选择，不是审美选择 |
-| 暗色 · chapters/art-style 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/art-style / 实际 /how-to-build-a-good-game/chapters/art-style |
+| 暗色 · chapters/art-style 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/art-style / 实际 /chapters/art-style |
 | 暗色 · chapters/art-style 有正文容器 | ✅ |  |
 | 暗色 · chapters/art-style 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/art-style 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -201,7 +201,7 @@
 | 暗色 · chapters/art-style 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/art-style 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/game-feel 渲染 | ✅ | 手感：一套可以调出来的东西 |
-| 暗色 · chapters/game-feel 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/game-feel / 实际 /how-to-build-a-good-game/chapters/game-feel |
+| 暗色 · chapters/game-feel 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/game-feel / 实际 /chapters/game-feel |
 | 暗色 · chapters/game-feel 有正文容器 | ✅ |  |
 | 暗色 · chapters/game-feel 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/game-feel 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -215,7 +215,7 @@
 | 暗色 · chapters/game-feel 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/game-feel 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/feedback-and-juice 渲染 | ✅ | 反馈感：飘字、震动、顿帧与音效的配方 |
-| 暗色 · chapters/feedback-and-juice 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/feedback-and-juice / 实际 /how-to-build-a-good-game/chapters/feedback-and-juice |
+| 暗色 · chapters/feedback-and-juice 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/feedback-and-juice / 实际 /chapters/feedback-and-juice |
 | 暗色 · chapters/feedback-and-juice 有正文容器 | ✅ |  |
 | 暗色 · chapters/feedback-and-juice 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/feedback-and-juice 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -229,7 +229,7 @@
 | 暗色 · chapters/feedback-and-juice 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/feedback-and-juice 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/2d-and-3d 渲染 | ✅ | 2D 与 3D：不是技术选择，而是市场定位 |
-| 暗色 · chapters/2d-and-3d 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/2d-and-3d / 实际 /how-to-build-a-good-game/chapters/2d-and-3d |
+| 暗色 · chapters/2d-and-3d 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/2d-and-3d / 实际 /chapters/2d-and-3d |
 | 暗色 · chapters/2d-and-3d 有正文容器 | ✅ |  |
 | 暗色 · chapters/2d-and-3d 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/2d-and-3d 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -243,7 +243,7 @@
 | 暗色 · chapters/2d-and-3d 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/2d-and-3d 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/data-driven-why 渲染 | ✅ | 数值的虚假重要性：为什么完美的数值论证什么也证明不了 |
-| 暗色 · chapters/data-driven-why 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/data-driven-why / 实际 /how-to-build-a-good-game/chapters/data-driven-why |
+| 暗色 · chapters/data-driven-why 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/data-driven-why / 实际 /chapters/data-driven-why |
 | 暗色 · chapters/data-driven-why 有正文容器 | ✅ |  |
 | 暗色 · chapters/data-driven-why 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/data-driven-why 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -257,7 +257,7 @@
 | 暗色 · chapters/data-driven-why 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/data-driven-why 已完成章节至少有一张图 | ✅ | 正文内视觉元素 7 个 |
 | 暗色 · chapters/shorten-validation 渲染 | ✅ | 把验证时间压到最短：素材测试、试玩广告与灰盒原型 |
-| 暗色 · chapters/shorten-validation 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/shorten-validation / 实际 /how-to-build-a-good-game/chapters/shorten-validation |
+| 暗色 · chapters/shorten-validation 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/shorten-validation / 实际 /chapters/shorten-validation |
 | 暗色 · chapters/shorten-validation 有正文容器 | ✅ |  |
 | 暗色 · chapters/shorten-validation 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/shorten-validation 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -271,7 +271,7 @@
 | 暗色 · chapters/shorten-validation 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/shorten-validation 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/metrics-and-traps 渲染 | ✅ | 指标体系与陷阱：D1/D7、付费漏斗、幸存者偏差 |
-| 暗色 · chapters/metrics-and-traps 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/metrics-and-traps / 实际 /how-to-build-a-good-game/chapters/metrics-and-traps |
+| 暗色 · chapters/metrics-and-traps 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/metrics-and-traps / 实际 /chapters/metrics-and-traps |
 | 暗色 · chapters/metrics-and-traps 有正文容器 | ✅ |  |
 | 暗色 · chapters/metrics-and-traps 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/metrics-and-traps 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -285,7 +285,7 @@
 | 暗色 · chapters/metrics-and-traps 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/metrics-and-traps 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · chapters/from-zero-to-one 渲染 | ✅ | 从 0 到 1 的可执行检查清单 |
-| 暗色 · chapters/from-zero-to-one 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/from-zero-to-one / 实际 /how-to-build-a-good-game/chapters/from-zero-to-one |
+| 暗色 · chapters/from-zero-to-one 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/from-zero-to-one / 实际 /chapters/from-zero-to-one |
 | 暗色 · chapters/from-zero-to-one 有正文容器 | ✅ |  |
 | 暗色 · chapters/from-zero-to-one 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/from-zero-to-one 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -299,7 +299,7 @@
 | 暗色 · chapters/from-zero-to-one 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/from-zero-to-one 已完成章节至少有一张图 | ✅ | 正文内视觉元素 8 个 |
 | 暗色 · chapters/how-games-die 渲染 | ✅ | 常见死法与复盘 |
-| 暗色 · chapters/how-games-die 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/how-games-die / 实际 /how-to-build-a-good-game/chapters/how-games-die |
+| 暗色 · chapters/how-games-die 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/how-games-die / 实际 /chapters/how-games-die |
 | 暗色 · chapters/how-games-die 有正文容器 | ✅ |  |
 | 暗色 · chapters/how-games-die 无残留 Markdown | ✅ |  |
 | 暗色 · chapters/how-games-die 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -313,7 +313,7 @@
 | 暗色 · chapters/how-games-die 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · chapters/how-games-die 已完成章节至少有一张图 | ✅ | 正文内视觉元素 2 个 |
 | 暗色 · appendix/references 渲染 | ✅ | 附录 A：引用与出处总表 |
-| 暗色 · appendix/references 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/references / 实际 /how-to-build-a-good-game/appendix/references |
+| 暗色 · appendix/references 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/references / 实际 /appendix/references |
 | 暗色 · appendix/references 有正文容器 | ✅ |  |
 | 暗色 · appendix/references 无残留 Markdown | ✅ |  |
 | 暗色 · appendix/references 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -327,7 +327,7 @@
 | 暗色 · appendix/references 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · appendix/references 已完成章节至少有一张图 | ✅ | 正文内视觉元素 8 个 |
 | 暗色 · appendix/glossary 渲染 | ✅ | 附录 B：术语表 |
-| 暗色 · appendix/glossary 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/glossary / 实际 /how-to-build-a-good-game/appendix/glossary |
+| 暗色 · appendix/glossary 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/glossary / 实际 /appendix/glossary |
 | 暗色 · appendix/glossary 有正文容器 | ✅ |  |
 | 暗色 · appendix/glossary 无残留 Markdown | ✅ |  |
 | 暗色 · appendix/glossary 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -341,7 +341,7 @@
 | 暗色 · appendix/glossary 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · appendix/glossary 已完成章节至少有一张图 | ✅ | 正文内视觉元素 6 个 |
 | 暗色 · appendix/bibliography 渲染 | ✅ | 附录 C：参考文献 |
-| 暗色 · appendix/bibliography 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/bibliography / 实际 /how-to-build-a-good-game/appendix/bibliography |
+| 暗色 · appendix/bibliography 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/bibliography / 实际 /appendix/bibliography |
 | 暗色 · appendix/bibliography 有正文容器 | ✅ |  |
 | 暗色 · appendix/bibliography 无残留 Markdown | ✅ |  |
 | 暗色 · appendix/bibliography 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -355,7 +355,7 @@
 | 暗色 · appendix/bibliography 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · appendix/bibliography 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 暗色 · appendix/worksheets 渲染 | ✅ | 附录 D：工作表与模板 |
-| 暗色 · appendix/worksheets 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/worksheets / 实际 /how-to-build-a-good-game/appendix/worksheets |
+| 暗色 · appendix/worksheets 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/worksheets / 实际 /appendix/worksheets |
 | 暗色 · appendix/worksheets 有正文容器 | ✅ |  |
 | 暗色 · appendix/worksheets 无残留 Markdown | ✅ |  |
 | 暗色 · appendix/worksheets 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -369,7 +369,7 @@
 | 暗色 · appendix/worksheets 站内链接指向存在的路由 | ✅ |  |
 | 暗色 · appendix/worksheets 已完成章节至少有一张图 | ✅ | 正文内视觉元素 7 个 |
 | 暗色 · appendix/about 渲染 | ✅ | 附录 E：关于本书 |
-| 暗色 · appendix/about 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/about / 实际 /how-to-build-a-good-game/appendix/about |
+| 暗色 · appendix/about 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/about / 实际 /appendix/about |
 | 暗色 · appendix/about 有正文容器 | ✅ |  |
 | 暗色 · appendix/about 无残留 Markdown | ✅ |  |
 | 暗色 · appendix/about 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -384,7 +384,7 @@
 | 暗色 · appendix/about 已完成章节至少有一张图 | ✅ | 正文内视觉元素 1 个 |
 | 暗色 · 不存在的章节（应显示 404） 显示应用内 404 | ✅ | 正确 |
 | 亮色 · 首页 渲染 | ✅ | 如何构建一个好游戏 |
-| 亮色 · 首页 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game / 实际 /how-to-build-a-good-game |
+| 亮色 · 首页 路由地址正确（含深链接兜底还原） | ✅ | 期望  / 实际  |
 | 亮色 · 首页 有正文容器 | ✅ |  |
 | 亮色 · 首页 无残留 Markdown | ✅ |  |
 | 亮色 · 首页 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -397,7 +397,7 @@
 | 亮色 · 首页 页面标题包含书名 | ✅ | 如何构建一个好游戏 |
 | 亮色 · 首页 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/preface 渲染 | ✅ | 序言：这本书想解决什么 |
-| 亮色 · chapters/preface 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/preface / 实际 /how-to-build-a-good-game/chapters/preface |
+| 亮色 · chapters/preface 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/preface / 实际 /chapters/preface |
 | 亮色 · chapters/preface 有正文容器 | ✅ |  |
 | 亮色 · chapters/preface 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/preface 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -411,7 +411,7 @@
 | 亮色 · chapters/preface 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/preface 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/nintendo-three-rulers 渲染 | ✅ | 任天堂的三把尺子：社交性、口碑，与那个被遗忘的第三项 |
-| 亮色 · chapters/nintendo-three-rulers 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/nintendo-three-rulers / 实际 /how-to-build-a-good-game/chapters/nintendo-three-rulers |
+| 亮色 · chapters/nintendo-three-rulers 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/nintendo-three-rulers / 实际 /chapters/nintendo-three-rulers |
 | 亮色 · chapters/nintendo-three-rulers 有正文容器 | ✅ |  |
 | 亮色 · chapters/nintendo-three-rulers 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/nintendo-three-rulers 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -425,7 +425,7 @@
 | 亮色 · chapters/nintendo-three-rulers 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/nintendo-three-rulers 已完成章节至少有一张图 | ✅ | 正文内视觉元素 8 个 |
 | 亮色 · chapters/what-masters-bet-on 渲染 | ✅ | 顶级创作者的原话：他们各自押注的是什么 |
-| 亮色 · chapters/what-masters-bet-on 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/what-masters-bet-on / 实际 /how-to-build-a-good-game/chapters/what-masters-bet-on |
+| 亮色 · chapters/what-masters-bet-on 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/what-masters-bet-on / 实际 /chapters/what-masters-bet-on |
 | 亮色 · chapters/what-masters-bet-on 有正文容器 | ✅ |  |
 | 亮色 · chapters/what-masters-bet-on 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/what-masters-bet-on 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -439,7 +439,7 @@
 | 亮色 · chapters/what-masters-bet-on 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/what-masters-bet-on 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/mechanics-of-fun 渲染 | ✅ | 好玩的机制学：核心循环、发现与惊喜、心流 |
-| 亮色 · chapters/mechanics-of-fun 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/mechanics-of-fun / 实际 /how-to-build-a-good-game/chapters/mechanics-of-fun |
+| 亮色 · chapters/mechanics-of-fun 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/mechanics-of-fun / 实际 /chapters/mechanics-of-fun |
 | 亮色 · chapters/mechanics-of-fun 有正文容器 | ✅ |  |
 | 亮色 · chapters/mechanics-of-fun 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/mechanics-of-fun 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -453,7 +453,7 @@
 | 亮色 · chapters/mechanics-of-fun 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/mechanics-of-fun 已完成章节至少有一张图 | ✅ | 正文内视觉元素 6 个 |
 | 亮色 · chapters/sixty-is-zero 渲染 | ✅ | 60 分就是 0 分：当及格线由同行决定 |
-| 亮色 · chapters/sixty-is-zero 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/sixty-is-zero / 实际 /how-to-build-a-good-game/chapters/sixty-is-zero |
+| 亮色 · chapters/sixty-is-zero 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/sixty-is-zero / 实际 /chapters/sixty-is-zero |
 | 亮色 · chapters/sixty-is-zero 有正文容器 | ✅ |  |
 | 亮色 · chapters/sixty-is-zero 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/sixty-is-zero 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -467,7 +467,7 @@
 | 亮色 · chapters/sixty-is-zero 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/sixty-is-zero 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/competence-floor 渲染 | ✅ | 能力地板：同行的平均分，就是你的 0 分 |
-| 亮色 · chapters/competence-floor 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/competence-floor / 实际 /how-to-build-a-good-game/chapters/competence-floor |
+| 亮色 · chapters/competence-floor 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/competence-floor / 实际 /chapters/competence-floor |
 | 亮色 · chapters/competence-floor 有正文容器 | ✅ |  |
 | 亮色 · chapters/competence-floor 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/competence-floor 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -481,7 +481,7 @@
 | 亮色 · chapters/competence-floor 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/competence-floor 已完成章节至少有一张图 | ✅ | 正文内视觉元素 5 个 |
 | 亮色 · chapters/market-structure 渲染 | ✅ | 客群与流量：为什么同一套数值模型必然出错 |
-| 亮色 · chapters/market-structure 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/market-structure / 实际 /how-to-build-a-good-game/chapters/market-structure |
+| 亮色 · chapters/market-structure 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/market-structure / 实际 /chapters/market-structure |
 | 亮色 · chapters/market-structure 有正文容器 | ✅ |  |
 | 亮色 · chapters/market-structure 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/market-structure 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -495,7 +495,7 @@
 | 亮色 · chapters/market-structure 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/market-structure 已完成章节至少有一张图 | ✅ | 正文内视觉元素 2 个 |
 | 亮色 · chapters/monetization-math 渲染 | ✅ | 商业化算术：定价、内购、广告与 LTV/CAC |
-| 亮色 · chapters/monetization-math 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/monetization-math / 实际 /how-to-build-a-good-game/chapters/monetization-math |
+| 亮色 · chapters/monetization-math 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/monetization-math / 实际 /chapters/monetization-math |
 | 亮色 · chapters/monetization-math 有正文容器 | ✅ |  |
 | 亮色 · chapters/monetization-math 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/monetization-math 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -509,7 +509,7 @@
 | 亮色 · chapters/monetization-math 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/monetization-math 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/cross-industry-principles 渲染 | ✅ | 可跨行业复用的商业原理 |
-| 亮色 · chapters/cross-industry-principles 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/cross-industry-principles / 实际 /how-to-build-a-good-game/chapters/cross-industry-principles |
+| 亮色 · chapters/cross-industry-principles 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/cross-industry-principles / 实际 /chapters/cross-industry-principles |
 | 亮色 · chapters/cross-industry-principles 有正文容器 | ✅ |  |
 | 亮色 · chapters/cross-industry-principles 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/cross-industry-principles 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -523,7 +523,7 @@
 | 亮色 · chapters/cross-industry-principles 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/cross-industry-principles 已完成章节至少有一张图 | ✅ | 正文内视觉元素 5 个 |
 | 亮色 · chapters/theme-and-core-loop 渲染 | ✅ | 选题与主玩法：先决定卖给谁，再决定怎么玩 |
-| 亮色 · chapters/theme-and-core-loop 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/theme-and-core-loop / 实际 /how-to-build-a-good-game/chapters/theme-and-core-loop |
+| 亮色 · chapters/theme-and-core-loop 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/theme-and-core-loop / 实际 /chapters/theme-and-core-loop |
 | 亮色 · chapters/theme-and-core-loop 有正文容器 | ✅ |  |
 | 亮色 · chapters/theme-and-core-loop 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/theme-and-core-loop 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -537,7 +537,7 @@
 | 亮色 · chapters/theme-and-core-loop 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/theme-and-core-loop 已完成章节至少有一张图 | ✅ | 正文内视觉元素 6 个 |
 | 亮色 · chapters/gameplay-stacking 渲染 | ✅ | 副玩法与玩法组合：为什么几乎没人只做一个玩法 |
-| 亮色 · chapters/gameplay-stacking 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/gameplay-stacking / 实际 /how-to-build-a-good-game/chapters/gameplay-stacking |
+| 亮色 · chapters/gameplay-stacking 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/gameplay-stacking / 实际 /chapters/gameplay-stacking |
 | 亮色 · chapters/gameplay-stacking 有正文容器 | ✅ |  |
 | 亮色 · chapters/gameplay-stacking 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/gameplay-stacking 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -551,7 +551,7 @@
 | 亮色 · chapters/gameplay-stacking 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/gameplay-stacking 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/art-style 渲染 | ✅ | 美术风格：风格是市场选择，不是审美选择 |
-| 亮色 · chapters/art-style 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/art-style / 实际 /how-to-build-a-good-game/chapters/art-style |
+| 亮色 · chapters/art-style 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/art-style / 实际 /chapters/art-style |
 | 亮色 · chapters/art-style 有正文容器 | ✅ |  |
 | 亮色 · chapters/art-style 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/art-style 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -565,7 +565,7 @@
 | 亮色 · chapters/art-style 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/art-style 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/game-feel 渲染 | ✅ | 手感：一套可以调出来的东西 |
-| 亮色 · chapters/game-feel 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/game-feel / 实际 /how-to-build-a-good-game/chapters/game-feel |
+| 亮色 · chapters/game-feel 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/game-feel / 实际 /chapters/game-feel |
 | 亮色 · chapters/game-feel 有正文容器 | ✅ |  |
 | 亮色 · chapters/game-feel 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/game-feel 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -579,7 +579,7 @@
 | 亮色 · chapters/game-feel 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/game-feel 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/feedback-and-juice 渲染 | ✅ | 反馈感：飘字、震动、顿帧与音效的配方 |
-| 亮色 · chapters/feedback-and-juice 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/feedback-and-juice / 实际 /how-to-build-a-good-game/chapters/feedback-and-juice |
+| 亮色 · chapters/feedback-and-juice 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/feedback-and-juice / 实际 /chapters/feedback-and-juice |
 | 亮色 · chapters/feedback-and-juice 有正文容器 | ✅ |  |
 | 亮色 · chapters/feedback-and-juice 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/feedback-and-juice 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -593,7 +593,7 @@
 | 亮色 · chapters/feedback-and-juice 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/feedback-and-juice 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/2d-and-3d 渲染 | ✅ | 2D 与 3D：不是技术选择，而是市场定位 |
-| 亮色 · chapters/2d-and-3d 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/2d-and-3d / 实际 /how-to-build-a-good-game/chapters/2d-and-3d |
+| 亮色 · chapters/2d-and-3d 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/2d-and-3d / 实际 /chapters/2d-and-3d |
 | 亮色 · chapters/2d-and-3d 有正文容器 | ✅ |  |
 | 亮色 · chapters/2d-and-3d 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/2d-and-3d 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -607,7 +607,7 @@
 | 亮色 · chapters/2d-and-3d 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/2d-and-3d 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/data-driven-why 渲染 | ✅ | 数值的虚假重要性：为什么完美的数值论证什么也证明不了 |
-| 亮色 · chapters/data-driven-why 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/data-driven-why / 实际 /how-to-build-a-good-game/chapters/data-driven-why |
+| 亮色 · chapters/data-driven-why 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/data-driven-why / 实际 /chapters/data-driven-why |
 | 亮色 · chapters/data-driven-why 有正文容器 | ✅ |  |
 | 亮色 · chapters/data-driven-why 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/data-driven-why 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -621,7 +621,7 @@
 | 亮色 · chapters/data-driven-why 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/data-driven-why 已完成章节至少有一张图 | ✅ | 正文内视觉元素 7 个 |
 | 亮色 · chapters/shorten-validation 渲染 | ✅ | 把验证时间压到最短：素材测试、试玩广告与灰盒原型 |
-| 亮色 · chapters/shorten-validation 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/shorten-validation / 实际 /how-to-build-a-good-game/chapters/shorten-validation |
+| 亮色 · chapters/shorten-validation 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/shorten-validation / 实际 /chapters/shorten-validation |
 | 亮色 · chapters/shorten-validation 有正文容器 | ✅ |  |
 | 亮色 · chapters/shorten-validation 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/shorten-validation 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -635,7 +635,7 @@
 | 亮色 · chapters/shorten-validation 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/shorten-validation 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/metrics-and-traps 渲染 | ✅ | 指标体系与陷阱：D1/D7、付费漏斗、幸存者偏差 |
-| 亮色 · chapters/metrics-and-traps 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/metrics-and-traps / 实际 /how-to-build-a-good-game/chapters/metrics-and-traps |
+| 亮色 · chapters/metrics-and-traps 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/metrics-and-traps / 实际 /chapters/metrics-and-traps |
 | 亮色 · chapters/metrics-and-traps 有正文容器 | ✅ |  |
 | 亮色 · chapters/metrics-and-traps 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/metrics-and-traps 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -649,7 +649,7 @@
 | 亮色 · chapters/metrics-and-traps 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/metrics-and-traps 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · chapters/from-zero-to-one 渲染 | ✅ | 从 0 到 1 的可执行检查清单 |
-| 亮色 · chapters/from-zero-to-one 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/from-zero-to-one / 实际 /how-to-build-a-good-game/chapters/from-zero-to-one |
+| 亮色 · chapters/from-zero-to-one 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/from-zero-to-one / 实际 /chapters/from-zero-to-one |
 | 亮色 · chapters/from-zero-to-one 有正文容器 | ✅ |  |
 | 亮色 · chapters/from-zero-to-one 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/from-zero-to-one 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -663,7 +663,7 @@
 | 亮色 · chapters/from-zero-to-one 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/from-zero-to-one 已完成章节至少有一张图 | ✅ | 正文内视觉元素 8 个 |
 | 亮色 · chapters/how-games-die 渲染 | ✅ | 常见死法与复盘 |
-| 亮色 · chapters/how-games-die 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/chapters/how-games-die / 实际 /how-to-build-a-good-game/chapters/how-games-die |
+| 亮色 · chapters/how-games-die 路由地址正确（含深链接兜底还原） | ✅ | 期望 /chapters/how-games-die / 实际 /chapters/how-games-die |
 | 亮色 · chapters/how-games-die 有正文容器 | ✅ |  |
 | 亮色 · chapters/how-games-die 无残留 Markdown | ✅ |  |
 | 亮色 · chapters/how-games-die 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -677,7 +677,7 @@
 | 亮色 · chapters/how-games-die 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · chapters/how-games-die 已完成章节至少有一张图 | ✅ | 正文内视觉元素 2 个 |
 | 亮色 · appendix/references 渲染 | ✅ | 附录 A：引用与出处总表 |
-| 亮色 · appendix/references 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/references / 实际 /how-to-build-a-good-game/appendix/references |
+| 亮色 · appendix/references 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/references / 实际 /appendix/references |
 | 亮色 · appendix/references 有正文容器 | ✅ |  |
 | 亮色 · appendix/references 无残留 Markdown | ✅ |  |
 | 亮色 · appendix/references 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -691,7 +691,7 @@
 | 亮色 · appendix/references 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · appendix/references 已完成章节至少有一张图 | ✅ | 正文内视觉元素 8 个 |
 | 亮色 · appendix/glossary 渲染 | ✅ | 附录 B：术语表 |
-| 亮色 · appendix/glossary 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/glossary / 实际 /how-to-build-a-good-game/appendix/glossary |
+| 亮色 · appendix/glossary 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/glossary / 实际 /appendix/glossary |
 | 亮色 · appendix/glossary 有正文容器 | ✅ |  |
 | 亮色 · appendix/glossary 无残留 Markdown | ✅ |  |
 | 亮色 · appendix/glossary 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -705,7 +705,7 @@
 | 亮色 · appendix/glossary 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · appendix/glossary 已完成章节至少有一张图 | ✅ | 正文内视觉元素 6 个 |
 | 亮色 · appendix/bibliography 渲染 | ✅ | 附录 C：参考文献 |
-| 亮色 · appendix/bibliography 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/bibliography / 实际 /how-to-build-a-good-game/appendix/bibliography |
+| 亮色 · appendix/bibliography 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/bibliography / 实际 /appendix/bibliography |
 | 亮色 · appendix/bibliography 有正文容器 | ✅ |  |
 | 亮色 · appendix/bibliography 无残留 Markdown | ✅ |  |
 | 亮色 · appendix/bibliography 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -719,7 +719,7 @@
 | 亮色 · appendix/bibliography 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · appendix/bibliography 已完成章节至少有一张图 | ✅ | 正文内视觉元素 4 个 |
 | 亮色 · appendix/worksheets 渲染 | ✅ | 附录 D：工作表与模板 |
-| 亮色 · appendix/worksheets 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/worksheets / 实际 /how-to-build-a-good-game/appendix/worksheets |
+| 亮色 · appendix/worksheets 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/worksheets / 实际 /appendix/worksheets |
 | 亮色 · appendix/worksheets 有正文容器 | ✅ |  |
 | 亮色 · appendix/worksheets 无残留 Markdown | ✅ |  |
 | 亮色 · appendix/worksheets 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -733,7 +733,7 @@
 | 亮色 · appendix/worksheets 站内链接指向存在的路由 | ✅ |  |
 | 亮色 · appendix/worksheets 已完成章节至少有一张图 | ✅ | 正文内视觉元素 7 个 |
 | 亮色 · appendix/about 渲染 | ✅ | 附录 E：关于本书 |
-| 亮色 · appendix/about 路由地址正确（含深链接兜底还原） | ✅ | 期望 /how-to-build-a-good-game/appendix/about / 实际 /how-to-build-a-good-game/appendix/about |
+| 亮色 · appendix/about 路由地址正确（含深链接兜底还原） | ✅ | 期望 /appendix/about / 实际 /appendix/about |
 | 亮色 · appendix/about 有正文容器 | ✅ |  |
 | 亮色 · appendix/about 无残留 Markdown | ✅ |  |
 | 亮色 · appendix/about 图片有 alt 且带 base 前缀 | ✅ |  |
@@ -756,7 +756,7 @@
 | 状态 | 状态码 | 链接 |
 | --- | --- | --- |
 | ✅ 可访问 | 200 | http://www.gamelook.com.cn/2024/01/536001 |
-| ✅ 可访问 | 200 | https://apps.apple.com/cn/app/id6450645450 |
+| ⚠️ 本机网络无法访问 | — | https://apps.apple.com/cn/app/id6450645450 |
 | ✅ 可访问 | 200 | https://developers.weixin.qq.com/minigame/introduction/commercialization/guide/ad-monetization.html |
 | ✅ 可访问 | 200 | https://en.wikipedia.org/wiki/Campbell%27s_law |
 | ✅ 可访问 | 200 | https://en.wikipedia.org/wiki/Goodhart%27s_law |
@@ -770,8 +770,8 @@
 | ✅ 可访问 | 200 | https://github.com/neko233-com/how-to-build-a-good-game |
 | ✅ 可访问 | 200 | https://github.com/neko233-com/how-to-build-a-good-game/issues |
 | ✅ 可访问 | 200 | https://hbr.org/2003/07/delusions-of-success-how-optimism-undermines-executives-decisions |
-| ✅ 可访问 | 200 | https://press.princeton.edu/books/hardcover/9780691174952/the-tyranny-of-metrics |
-| ✅ 可访问 | 203 | https://pubmed.ncbi.nlm.nih.gov/16469928 |
+| ⚠️ 本机网络无法访问 | — | https://press.princeton.edu/books/hardcover/9780691174952/the-tyranny-of-metrics |
+| ✅ 可访问 | 200 | https://pubmed.ncbi.nlm.nih.gov/16469928 |
 | ✅ 可访问 | 200 | https://quoteinvestigator.com/2018/02/12/movies |
 | ✅ 可访问 | 200 | https://sensortower.com/blog/genshin-impact-one-billion-revenue |
 | ✅ 可访问 | 200 | https://shmuplations.com/miyamotodesign |
@@ -782,9 +782,9 @@
 | ⚠️ 站点拦截自动请求 | 403 | https://www.bakerinstitute.org/research/china-and-globalization-gaming-industry |
 | ✅ 可访问 | 200 | https://www.bbc.com/news/newsbeat-58707297 |
 | ✅ 可访问 | 200 | https://www.cna.org/reports/2022/09/Goodharts-Law-Recognizing-Mitigating-Manipulation-Measures-in-Analysis.pdf |
-| ✅ 可访问 | 200 | https://www.gamedeveloper.com/business/video-satoru-iwata-s-heart-of-a-gamer-keynote-at-gdc-2005 |
+| ⚠️ 本机网络无法访问 | — | https://www.gamedeveloper.com/business/video-satoru-iwata-s-heart-of-a-gamer-keynote-at-gdc-2005 |
 | ✅ 可访问 | 200 | https://www.gameres.com/901203031.html |
-| ✅ 可访问 | 200 | https://www.gamesindustry.biz/the-games-industry-is-stifled-by-a-culture-of-fear |
+| ⚠️ 本机网络无法访问 | — | https://www.gamesindustry.biz/the-games-industry-is-stifled-by-a-culture-of-fear |
 | ✅ 可访问 | 200 | https://www.itmedia.co.jp/makoto/articles/1002/10/news012_5.html |
 | ✅ 可访问 | 200 | https://www.lennysnewsletter.com/p/geoffrey-moore-on-finding-your-beachhead |
 | ✅ 可访问 | 200 | https://www.nintendo.co.jp/event/gdc2011/index.html |

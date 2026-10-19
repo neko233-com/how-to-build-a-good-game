@@ -91,11 +91,37 @@ npm run verify
 ## 发布
 
 ```bash
-git tag -a v0.3.0 -m "v0.3.0：……"
-git push origin v0.3.0
+git tag -a v1.3.0 -m "v1.3.0：……"
+git push origin v1.3.0
 ```
 
-`deploy.yml` 会跑完整校验后发布到 GitHub Pages。**普通 push 不会动线上。**
+同一个 tag 触发两条链路：`deploy.yml` → GitHub Pages，`deploy-cloudflare.yml` → Cloudflare Pages。**普通 push 不会动线上。**
+
+### base 必须按目标切换
+
+两条链路的部署路径不同，`base` 也不同：
+
+| 目标             | base                                                                    |
+| ---------------- | ----------------------------------------------------------------------- |
+| GitHub Pages     | `/how-to-build-a-good-game/`（`vite.config.ts` 的 `DEFAULT_SITE_BASE`） |
+| Cloudflare Pages | `/`（工作流里设 `SITE_BASE=/`）                                         |
+
+本地模拟某条链路：`SITE_BASE=/ vp build`（PowerShell 用 `$env:SITE_BASE="/"`）。`npm run verify` 读同一个变量。
+
+`index.html` 里的 base 是 `%SITE_BASE%` 占位符，由 `vite.config.ts` 的 `site-base` 插件在构建期替换；`404.html` 也由该插件按当前 base 生成。**不要**在 `public/` 里放静态 `404.html`——那样 base 会被写死。
+
+### 密钥（Cloudflare）
+
+只用 GitHub Secrets，**绝不入库、不打印**：
+
+| Secret                  | 需要的权限                    |
+| ----------------------- | ----------------------------- |
+| `CLOUDFLARE_API_TOKEN`  | 至少 `Cloudflare Pages: Edit` |
+| `CLOUDFLARE_ACCOUNT_ID` | —                             |
+
+添加方式：`gh secret set CLOUDFLARE_API_TOKEN`（交互式读取，不回显、不进 shell 历史），或在仓库 Settings 的网页里加。
+
+工作流里另有一道兜底：构建产物中若出现凭据形态的字符串，直接中止发布。`.gitignore` 已排除 `.dev.vars*`、`.wrangler/`、`.env.local`。
 
 坑：`github-pages` 环境的部署策略**默认只允许默认分支**，tag 会被拒（`Tag "vX" is not allowed to deploy`）。本项目已放行 `main` 分支与 `v*` tag；新建同类仓库时要记得在 Settings → Environments → github-pages 里加 tag 规则。
 
@@ -112,6 +138,7 @@ git push origin v0.3.0
 | 新增 mdx 后 glob 看不到   | Vite 转换缓存以**内容哈希**为键，写回相同内容不会失效 | 改动 `content.ts` 的内容让哈希变化，或删 `node_modules/.vite` |
 | 粗体解析成字面星号        | CJK 标点紧跟闭合 `**`、或粗体内含「」                 | 标点放粗体外；用编译器测试兜底                                |
 | `<>` 形式的 URL 自动链接  | MDX 当作 JSX 标签，报 `Unexpected character /`        | 一律写 `[文字](url)`                                          |
+| 部署到根域名后资源全 404  | 构建时 `base` 还是子路径前缀（`/<repo>/`）            | 用 `SITE_BASE=/` 构建；Cloudflare 工作流已设                  |
 
 ## 其他
 

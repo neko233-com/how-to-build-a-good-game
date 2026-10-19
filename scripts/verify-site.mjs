@@ -79,8 +79,12 @@ function findBrowser() {
 
 /** 从 vite.config.ts 读 base，避免两处各写一遍 */
 function readBase() {
-  const matched = readFileSync(join(ROOT, 'vite.config.ts'), 'utf8').match(/base:\s*'([^']+)'/);
-  if (!matched) throw new Error('没有在 vite.config.ts 里找到 base');
+  // 与 vite.config.ts 保持同一优先级：环境变量覆盖，否则用默认值
+  if (process.env.SITE_BASE) return process.env.SITE_BASE;
+  const matched = readFileSync(join(ROOT, 'vite.config.ts'), 'utf8').match(
+    /DEFAULT_SITE_BASE\s*=\s*'([^']+)'/,
+  );
+  if (!matched) throw new Error('没有在 vite.config.ts 里找到 DEFAULT_SITE_BASE');
   return matched[1];
 }
 

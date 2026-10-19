@@ -215,13 +215,50 @@ npm run verify
 **只有打 tag 才会发布线上站点。** 普通 push 只跑校验，不会动线上。
 
 ```bash
-git tag -a v0.2.0 -m "v0.2.0：写完第 02、03 章"
-git push origin v0.2.0
+git tag -a v1.3.0 -m "v1.3.0：……"
+git push origin v1.3.0
 ```
 
-随后 `deploy.yml` 会依次执行 `vp install --frozen-lockfile`、`vp check`、`vp test`、`vp build`，全部通过后上传产物并发布到 GitHub Pages。
+同一个 tag 会同时触发两条部署链路，两者的 `base` 不同：
 
-> 首次启用时有一个必做的设置：`github-pages` 环境默认只允许默认分支部署，**tag 不在允许列表里**，会导致部署被拒。需要在 `Settings → Environments → github-pages` 的 Deployment branches and tags 里放行 tag 规则（本项目已放行 `main` 分支与 `v*` tag）。
+| 目标             | 地址                                                    | base                         | 工作流                  |
+| ---------------- | ------------------------------------------------------- | ---------------------------- | ----------------------- |
+| GitHub Pages     | https://neko233-com.github.io/how-to-build-a-good-game/ | `/how-to-build-a-good-game/` | `deploy.yml`            |
+| Cloudflare Pages | https://note.neko233.com/                               | `/`                          | `deploy-cloudflare.yml` |
+
+`base` 由环境变量 `SITE_BASE` 控制（见 `vite.config.ts`）：GitHub Pages 用默认值，Cloudflare 工作流里设成 `/`。改域名或子路径时只改这一个变量——`index.html` 里的深链接还原脚本与 `404.html` 都会在构建期按当前 base 自动生成。
+
+### Cloudflare Pages 首次配置
+
+1. **创建项目。** Cloudflare Dashboard → Workers & Pages → Create → Pages，选「Direct Upload」（部署交给 GitHub Actions，不需要 Cloudflare 侧的 Git 集成）。项目名默认 `neko233-note`，可用仓库 Variable `CF_PAGES_PROJECT` 覆盖。
+2. **添加两个 GitHub Secret**（见下节「密钥安全」）。
+3. **绑定自定义域名。** Pages 项目 → Custom domains → 添加 `note.neko233.com`。域名已托管在 Cloudflare 的话通常一步完成，证书自动签发。
+4. 之后打 tag 即可发布。
+
+### 密钥安全
+
+| Secret 名称             | 用途                | 需要的权限                    |
+| ----------------------- | ------------------- | ----------------------------- |
+| `CLOUDFLARE_API_TOKEN`  | 调用 Pages 部署接口 | 至少 `Cloudflare Pages: Edit` |
+| `CLOUDFLARE_ACCOUNT_ID` | 指定账号            | —                             |
+
+**添加方式**（推荐命令行，`gh secret set` 交互式读取，不回显、不进 shell 历史）：
+
+```bash
+gh secret set CLOUDFLARE_API_TOKEN
+gh secret set CLOUDFLARE_ACCOUNT_ID
+```
+
+也可以在 `Settings → Secrets and variables → Actions` 网页添加。
+
+**几条硬约束：**
+
+- 凭据只放在 GitHub Secrets，工作流里通过 `${{ secrets.* }}` 注入，**不落盘、不打印**。
+- `.gitignore` 已排除 `.dev.vars*`、`.wrangler/`、`.env.local` 等本地凭据文件。
+- `deploy-cloudflare.yml` 里有一道兜底检查：构建产物中若出现凭据形态的字符串，直接中止发布。
+- 给 token 设最小权限与有效期；一旦怀疑泄漏，立刻在 Cloudflare 后台吊销并重置 secret。
+
+> GitHub Pages 首次启用还有一个必做的设置：`github-pages` 环境默认只允许默认分支部署，**tag 不在允许列表里**，会导致部署被拒。需要在 `Settings → Environments → github-pages` 的 Deployment branches and tags 里放行 tag 规则（本项目已放行 `main` 分支与 `v*` tag）。
 
 ## 设计说明
 

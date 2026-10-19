@@ -30,8 +30,9 @@
     <script>
       // GitHub Pages 对未知深链接返回 404.html，那里会把原始路径塞进 ?p= 参数。
       // 这里在 React 挂载之前把它还原成真实 URL，保证刷新深链接不丢路由。
+      // base 由构建期注入（GitHub Pages 是子路径，Cloudflare 是根路径）。
       (function () {
-        var base = '/how-to-build-a-good-game/';
+        var base = '%SITE_BASE%';
         var match = location.search.match(/^\?p=([^&]*)$/);
         if (!match) return;
         // 两侧的斜杠都要去重：base 以 / 结尾、还原出来的路径也以 / 开头，

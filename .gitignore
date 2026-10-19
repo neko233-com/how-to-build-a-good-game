@@ -39,3 +39,9 @@ coverage/
 # 本地 CLI 状态（个人配置与 agent 记忆，不随公开仓库发布）
 .codely-cli/
 CODELY.md
+
+# 部署凭据（Cloudflare 等），绝不入库
+.dev.vars*
+.wrangler/
+.env.local
+.env.*.local
