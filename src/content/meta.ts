@@ -5,7 +5,7 @@
  * 章节正文（MDX）通过 slug 与本清单对应，避免标题在两处重复维护。
  */
 
-export type PartId = 'preface' | 'craft' | 'market' | 'data' | 'delivery' | 'appendix';
+export type PartId = 'preface' | 'craft' | 'market' | 'design' | 'data' | 'delivery' | 'appendix';
 
 export interface Part {
   id: PartId;
@@ -66,7 +66,7 @@ export const PARTS: Part[] = [
     description: '先搞清楚「好」是什么：可引用的定义、可拆解的机制，以及及格线为什么会漂移。',
     basePath: '/chapters',
     plate: {
-      src: 'images/part-1-craft.jpg',
+      src: 'images/part-craft.jpg',
       alt: '分篇插画：一把巨大的几何直尺斜立着，尺身有三道刻度缺口，旁边地面上散落着立方体、圆锥与球体',
     },
   },
@@ -77,29 +77,41 @@ export const PARTS: Part[] = [
     description: '好游戏不等于能活下来。这一篇谈货架、流量、定价与可跨行业复用的商业原理。',
     basePath: '/chapters',
     plate: {
-      src: 'images/part-2-market.jpg',
+      src: 'images/part-market.jpg',
       alt: '分篇插画：一组等距排列的几何货架，格子里放着形态各异的小型几何体，地面上铺着由琥珀色箭头组成的路线',
     },
   },
   {
-    id: 'data',
+    id: 'design',
     number: 3,
+    title: '设计与工艺',
+    description:
+      '知道场子在哪之后才谈设计：先选题与主玩法，再搭副玩法、定美术风格，最后把手感与反馈这些「看不见的工艺」做对。',
+    basePath: '/chapters',
+    plate: {
+      src: 'images/part-design.jpg',
+      alt: '分篇插画：等距工作台上摆着正在组装中的几何角色构件、三块质感色板，以及一段弹簧与阶梯',
+    },
+  },
+  {
+    id: 'data',
+    number: 4,
     title: '数据驱动',
     description: '数据什么时候是对的、什么时候是错的，以及如何把验证时间压到最短。',
     basePath: '/chapters',
     plate: {
-      src: 'images/part-3-data.jpg',
+      src: 'images/part-data.jpg',
       alt: '分篇插画：等距桌面上摊开一张几何网格图表板，立着高低不同的琥珀色柱体与一条上扬折线，旁边是一个几何漏斗',
     },
   },
   {
     id: 'delivery',
-    number: 4,
+    number: 5,
     title: '落地',
     description: '把前面所有原则收拢成一份可以照着做的清单。',
     basePath: '/chapters',
     plate: {
-      src: 'images/part-4-delivery.jpg',
+      src: 'images/part-delivery.jpg',
       alt: '分篇插画：一段正在垒砌的几何砖墙台阶，右侧放着一只半开的几何工具箱，一条路径通向台阶顶端',
     },
   },
@@ -202,8 +214,66 @@ export const CHAPTERS: Chapter[] = [
     status: 'written',
   },
   {
-    slug: 'data-driven-why',
+    slug: 'theme-and-core-loop',
     order: '09',
+    title: '选题与主玩法：先决定卖给谁，再决定怎么玩',
+    short: '选题与主玩法',
+    summary:
+      '选题是市场决策、玩法是产品决策——先定「卖给谁、卖什么」，再定「怎么玩」。顺序反了，就会做出没人要的好游戏。',
+    part: 'design',
+    status: 'written',
+  },
+  {
+    slug: 'gameplay-stacking',
+    order: '10',
+    title: '副玩法与玩法组合：为什么几乎没人只做一个玩法',
+    short: '副玩法与组合',
+    summary:
+      '副玩法不是「多加点东西」，而是承担留存延长、付费分层与买量素材多样性三件事；每种组合都有它的代价。',
+    part: 'design',
+    status: 'written',
+  },
+  {
+    slug: 'art-style',
+    order: '11',
+    title: '美术风格：风格是市场选择，不是审美选择',
+    short: '美术风格',
+    summary: '风格决定了买量素材的辨识度、目标人群的第一眼接受度和生产成本——它首先是一条商业决策。',
+    part: 'design',
+    status: 'written',
+  },
+  {
+    slug: 'game-feel',
+    order: '12',
+    title: '手感：一套可以调出来的东西',
+    short: '手感',
+    summary:
+      '手感由一组具体参数构成：重力、初速、加速度、输入缓冲、土狼时间、顿帧与相机跟随。配可交互调参器。',
+    part: 'design',
+    status: 'written',
+  },
+  {
+    slug: 'feedback-and-juice',
+    order: '13',
+    title: '反馈感：飘字、震动、顿帧与音效的配方',
+    short: '反馈感',
+    summary: '把反馈拆成视觉、听觉、触觉三类逐一列举，并给出「过犹不及」的边界。配可交互实验台。',
+    part: 'design',
+    status: 'written',
+  },
+  {
+    slug: '2d-and-3d',
+    order: '14',
+    title: '2D 与 3D：不是技术选择，而是市场定位',
+    short: '2D 与 3D',
+    summary:
+      '从玩家视角与推广视角对比 2D/3D 的真实差异：操作直观性、空间认知、素材可读性、平台适配与成本。',
+    part: 'design',
+    status: 'written',
+  },
+  {
+    slug: 'data-driven-why',
+    order: '15',
     title: '数值的虚假重要性：为什么完美的数值论证什么也证明不了',
     short: '数值的虚假重要性',
     summary:
@@ -213,7 +283,7 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     slug: 'shorten-validation',
-    order: '10',
+    order: '16',
     title: '把验证时间压到最短：素材测试、试玩广告与灰盒原型',
     short: '把验证时间压到最短',
     summary: '用最低成本换最早的真实反馈：把数月的赌博，压缩成数周的实验。',
@@ -223,7 +293,7 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     slug: 'metrics-and-traps',
-    order: '11',
+    order: '17',
     title: '指标体系与陷阱：D1/D7、付费漏斗、幸存者偏差',
     short: '指标与陷阱',
     summary: '哪些指标真的预测生死，哪些只是安慰剂；以及幸存者偏差如何系统性地骗过所有人。',
@@ -232,7 +302,7 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     slug: 'from-zero-to-one',
-    order: '12',
+    order: '18',
     title: '从 0 到 1 的可执行检查清单',
     short: '0 到 1 检查清单',
     summary: '把前面所有章节收拢成一份可以照着做的清单。',
@@ -241,7 +311,7 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     slug: 'how-games-die',
-    order: '13',
+    order: '19',
     title: '常见死法与复盘',
     short: '常见死法与复盘',
     summary: '项目不是突然死的，是每天死一点：常见死法清单与复盘方法。',
@@ -272,6 +342,25 @@ export const CHAPTERS: Chapter[] = [
     title: '附录 C：参考文献',
     short: '参考文献',
     summary: '书籍、演讲、访谈与研究报告清单。',
+    part: 'appendix',
+    status: 'written',
+  },
+  {
+    slug: 'worksheets',
+    order: 'D',
+    title: '附录 D：工作表与模板',
+    short: '工作表与模板',
+    summary:
+      '把书里的方法做成可以直接填的表：能力地板、客群四问、循环诊断、验证漏斗、数值自检、复盘规则、总清单。',
+    part: 'appendix',
+    status: 'written',
+  },
+  {
+    slug: 'about',
+    order: 'E',
+    title: '附录 E：关于本书',
+    short: '关于本书',
+    summary: '版本与修订、如何引用、写作与核实方法、勘误渠道与许可。',
     part: 'appendix',
     status: 'written',
   },
